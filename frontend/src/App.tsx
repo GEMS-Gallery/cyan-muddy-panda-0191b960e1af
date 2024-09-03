@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Routes, Route, Link } from 'react-router-dom';
 import { AppBar, Toolbar, Typography, Container, CircularProgress } from '@mui/material';
+import { ForumOutlined } from '@mui/icons-material';
 import { backend } from 'declarations/backend';
 import Home from './components/Home';
 import CategoryPage from './components/CategoryPage';
@@ -33,8 +34,9 @@ function App() {
 
   return (
     <div className="min-h-screen bg-gray-100">
-      <AppBar position="static" className="bg-blue-600">
+      <AppBar position="static" className="app-header">
         <Toolbar>
+          <ForumOutlined className="mr-2" />
           <Typography variant="h6" component={Link} to="/" className="text-white no-underline">
             IC Forum
           </Typography>

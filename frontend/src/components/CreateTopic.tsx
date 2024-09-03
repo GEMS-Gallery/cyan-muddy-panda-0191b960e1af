@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation } from 'react-router-dom';
-import { TextField, Button, Typography, CircularProgress } from '@mui/material';
+import { TextField, Button, Typography, CircularProgress, Paper } from '@mui/material';
+import { Send } from '@mui/icons-material';
 import { backend } from 'declarations/backend';
 
 function CreateTopic() {
@@ -38,8 +39,8 @@ function CreateTopic() {
   };
 
   return (
-    <div>
-      <Typography variant="h4" component="h1" className="mb-4">
+    <Paper elevation={3} className="p-6">
+      <Typography variant="h4" component="h1" className="mb-4 text-indigo-800">
         Create New Topic
       </Typography>
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -65,11 +66,12 @@ function CreateTopic() {
           variant="contained"
           color="primary"
           disabled={loading}
+          startIcon={loading ? <CircularProgress size={24} /> : <Send />}
         >
-          {loading ? <CircularProgress size={24} /> : 'Create Topic'}
+          {loading ? 'Creating...' : 'Create Topic'}
         </Button>
       </form>
-    </div>
+    </Paper>
   );
 }
 

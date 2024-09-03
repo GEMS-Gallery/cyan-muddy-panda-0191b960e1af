@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { Typography, Button, List, ListItem, ListItemText, Divider } from '@mui/material';
+import { Typography, Button, List, ListItem, ListItemText, Divider, Paper } from '@mui/material';
+import { AddCircleOutline } from '@mui/icons-material';
 import { backend } from 'declarations/backend';
 
 type Topic = {
@@ -37,7 +38,7 @@ function CategoryPage() {
 
   return (
     <div>
-      <Typography variant="h4" component="h1" className="mb-4">
+      <Typography variant="h4" component="h1" className="mb-4 text-indigo-800">
         {categoryName}
       </Typography>
       <Button
@@ -46,26 +47,29 @@ function CategoryPage() {
         variant="contained"
         color="primary"
         className="mb-4"
+        startIcon={<AddCircleOutline />}
       >
         Create New Topic
       </Button>
-      <List>
-        {topics.map((topic) => (
-          <React.Fragment key={topic.id.toString()}>
-            <ListItem
-              component={Link}
-              to={`/topic/${topic.id}`}
-              className="hover:bg-gray-100 transition-colors duration-200"
-            >
-              <ListItemText
-                primary={topic.title}
-                secondary={`Created at: ${new Date(Number(topic.createdAt) / 1000000).toLocaleString()}`}
-              />
-            </ListItem>
-            <Divider />
-          </React.Fragment>
-        ))}
-      </List>
+      <Paper elevation={3} className="p-4">
+        <List>
+          {topics.map((topic) => (
+            <React.Fragment key={topic.id.toString()}>
+              <ListItem
+                component={Link}
+                to={`/topic/${topic.id}`}
+                className="hover:bg-gray-100 transition-colors duration-200"
+              >
+                <ListItemText
+                  primary={<Typography variant="h6" className="text-indigo-700">{topic.title}</Typography>}
+                  secondary={`Created at: ${new Date(Number(topic.createdAt) / 1000000).toLocaleString()}`}
+                />
+              </ListItem>
+              <Divider />
+            </React.Fragment>
+          ))}
+        </List>
+      </Paper>
     </div>
   );
 }

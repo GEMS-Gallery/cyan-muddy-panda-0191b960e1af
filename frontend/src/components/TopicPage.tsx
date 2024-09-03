@@ -37,10 +37,10 @@ function TopicPage() {
 
   return (
     <div>
-      <Typography variant="h4" component="h1" className="mb-4">
+      <Typography variant="h4" component="h1" className="mb-4 text-indigo-800">
         {topic.title}
       </Typography>
-      <Paper className="p-4 mb-4">
+      <Paper elevation={3} className="p-6 mb-4">
         <Typography variant="body1">
           {topic.content || 'No content available.'}
         </Typography>
