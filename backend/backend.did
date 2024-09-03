@@ -1,0 +1,29 @@
+type TopicId = nat;
+type Topic = 
+ record {
+   categoryId: CategoryId;
+   content: opt text;
+   createdAt: Time;
+   id: TopicId;
+   title: text;
+ };
+type Time = int;
+type Result = 
+ variant {
+   err: text;
+   ok: TopicId;
+ };
+type CategoryId = nat;
+type Category = 
+ record {
+   description: text;
+   id: CategoryId;
+   name: text;
+ };
+service : {
+  createTopic: (CategoryId, text, opt text) -> (Result);
+  getCategories: () -> (vec Category) query;
+  getTopic: (TopicId) -> (opt Topic) query;
+  getTopics: (CategoryId) -> (vec Topic) query;
+  init: () -> ();
+}

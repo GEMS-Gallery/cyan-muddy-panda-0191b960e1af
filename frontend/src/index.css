@@ -1,0 +1,14 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+body {
+  font-family: 'Roboto', sans-serif;
+  @apply bg-gray-100;
+}
+
+.header-bg {
+  background-image: url('https://images.unsplash.com/photo-1531539134685-27d854339120?ixid=M3w2MzIxNTd8MHwxfHJhbmRvbXx8fHx8fHx8fDE3MjUzOTIwODN8&ixlib=rb-4.0.3');
+  background-size: cover;
+  background-position: center;
+}
